@@ -32,7 +32,7 @@ public class BlogExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value
             = {IllegalArgumentException.class})
-    public ResponseEntity handlePostNotFound(IllegalArgumentException e) {
+    public ResponseEntity handleIllegalArgumentException(IllegalArgumentException e) {
         LOG.warn("IllegalArgumentException: {}", e.getMessage());
         return ResponseEntity.status(BAD_REQUEST)
                 .contentType(MediaType.APPLICATION_JSON)
