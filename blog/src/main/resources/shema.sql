@@ -1,0 +1,33 @@
+--DROP TABLE IF EXISTS BLOG;
+DROP TABLE IF EXISTS POST;
+DROP TABLE IF EXISTS COMMENT;
+
+--CREATE TABLE BLOG
+--(
+--  blog_id INTEGER NOT NULL AUTO_INCREMENT,
+--  blog_name VARCHAR(50) NOT NULL,
+--  PRIMARY KEY(blog_id)
+--);
+
+CREATE TABLE POST
+(
+  post_id INTEGER NOT NULL AUTO_INCREMENT,
+  --blog_id INTEGER NOT NULL,
+  title VARCHAR(50) NOT NULL,
+  content VARCHAR(250),
+  author VARCHAR(50),
+  created_at TIMESTAMP,
+  PRIMARY KEY(post_id)
+ -- FOREIGN KEY (blog_id) REFERENCES BLOG(blog_id)
+);
+
+CREATE TABLE COMMENT
+(
+  comment_id INTEGER NOT NULL AUTO_INCREMENT,
+  post_id INTEGER,
+  text VARCHAR(250),
+  author VARCHAR(50),
+  created_at TIMESTAMP,
+  PRIMARY KEY(comment_id)
+  FOREIGN KEY (post_id) REFERENCES POST(post_id)
+);
